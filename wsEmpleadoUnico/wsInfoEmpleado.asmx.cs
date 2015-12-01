@@ -18,7 +18,7 @@ namespace wsEmpleadoUnico
     [ToolboxItem(false)]
     public class wsInfoEmpleado : System.Web.Services.WebService
     {
-        [WebMethod(Description = "Regresa el DataSet de los Empleados de Nuevo Ingreso. Enviar el número de mes.(02)")]
+        [WebMethod(Description = "Regresa el dataSet de empleados de Nuevo Ingreso. Enviar el número de mes.(02)")]
         public DataSet dsRegresaEmpleadosNuevoIngreso(int MesCon)
         {
             DataSet dsEmpNuevoIngr = new DataSet();
@@ -26,6 +26,7 @@ namespace wsEmpleadoUnico
 
             consultaNuevoIngreso = "EXEC [dbo].[spDSWS_SelectEmpleadosNuevoIngreso] " + MesCon;
             conexionEmpU().Open();
+
             SqlDataAdapter adapter = new SqlDataAdapter(consultaNuevoIngreso, conexionEmpU());
             adapter.Fill(dsEmpNuevoIngr);
             SqlConnection.ClearAllPools();
